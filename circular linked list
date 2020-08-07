@@ -1,0 +1,96 @@
+import java.io.*; 
+
+
+public class Main { 
+
+	Node head,tail;   
+	
+	static class Node { 
+
+		int data; 
+		Node next; 
+ 
+		Node(int d) 
+		{ 
+			data = d; 
+			next = null; 
+		} 
+	} 
+     
+     
+    public static Main beg(Main list ,int data)
+    {
+        Node node = new Node(data);
+        
+        if (list.head==null){
+            list.head=node;
+            list.tail=node;
+        }
+         else{
+         Node t=list.head;
+		node.next =t;
+		list.head =node;
+		list.tail.next=list.head;
+         }
+		return list;
+		
+    }
+
+	public static Main insert(Main list, int data) 
+	{ 
+		Node node = new Node(data); 
+		node.next = null; 
+
+		 
+		if (list.head == null) { 
+			list.head = node;
+			list.tail = node;
+		} 
+		else { 
+			 
+			 list.tail.next=node;
+			 list.tail=node;
+			 list.tail.next=list.head;
+			
+			
+		} 
+
+		
+		return list; 
+	} 
+
+
+	public static void printList(Main list) 
+	{ 
+		Node currNode = list.head; 
+
+		 do{ 
+			System.out.print(currNode.data + " "); 
+			currNode = currNode.next; 
+		} while (currNode != list.head);
+		System.out.println();
+		
+	} 
+
+	
+	public static void main(String[] args) 
+	{ 
+		
+		Main list = new Main(); 
+
+	 
+		list = insert(list, 1); 
+		list = insert(list, 2); 
+		list = insert(list, 3); 
+		list = insert(list, 4); 
+		list = insert(list, 5);
+		printList(list);
+		list = beg(list, 0); 
+		list = beg(list, 5); 
+		list = beg(list, 4); 
+
+		 
+		printList(list); 
+		
+	} 
+}
